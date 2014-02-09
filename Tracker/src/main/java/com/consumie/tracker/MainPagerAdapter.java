@@ -1,46 +1,42 @@
 package com.consumie.tracker;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.consumie.tracker.util.API;
 import com.consumie.tracker.util.BaseActivity;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 /**
  * Created by Arango on 1/2/14.
  */
-public class MainPagerAdapter extends FragmentPagerAdapter {
+public class MainPagerAdapter extends FragmentStatePagerAdapter {
     private BaseActivity activity;
-    public MainPagerAdapter(FragmentManager fm, BaseActivity activity) {
-        super(fm);
-        this.activity = activity;
-    }
+    private Integer cnt = 0;
+    private ArrayList<Fragment> views = new ArrayList<Fragment>();
 
-    @Override
-    public Fragment getItem(int position) {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
-        if (position == 0) {
-            ListFragment fragment1 = new ListFragment(this.activity);
-            return fragment1;
-        } else if (position == 1) {
-            ListFragment fragment2 = new ListFragment(this.activity);
-            return fragment2;
-        }
-        return null;
+    public MainPagerAdapter(FragmentManager fm, BaseActivity act) {
+        super(fm);
+        this.activity = act;
     }
 
     @Override
     public int getCount() {
-        // Show 3 total pages.
-        return 2;
+        return activity.getItems();
     }
 
     @Override
-    public CharSequence getPageTitle(int position) {
-        return null;
+    public Fragment getItem(int position) {
+        ContentFragment frag = new ContentFragment(activity.getItem(position));
+        return frag;
     }
+
 }

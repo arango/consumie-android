@@ -17,6 +17,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.consumie.tracker.models.Login;
 import com.consumie.tracker.models.Results;
 import com.consumie.tracker.util.APICallback;
 import com.consumie.tracker.util.BaseActivity;
@@ -68,8 +69,6 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
-        getSupportActionBar().hide();
         setContentView(R.layout.activity_login);
 
         // Set up the login form.
@@ -115,16 +114,15 @@ public class LoginActivity extends BaseActivity {
                 }
             }
         });
-        //request.executeAsync();
+        Login l = api.getSavedLogin();
+        if (l != null) {
+            mEmailView.setText(l.username);
+            mPasswordView.setText(l.password);
+            attemptLogin();
+        }
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.login, menu);
-        return true;
-    }
 
     /**
      * Attempts to sign in or register the account specified by the login form.
@@ -178,6 +176,7 @@ public class LoginActivity extends BaseActivity {
                     if (results.Login.error != null) {
                         Crouton.makeText(LoginActivity.this, results.Login.error, Style.ALERT).show();
                     } else {
+                        results.Login.password = mPassword;
                         api.setUser(results.Login);
                         Intent i = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(i);

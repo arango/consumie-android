@@ -8,4 +8,5 @@ public class Login {
     public int imageID;
     public String userkey;
     public String error;
+    public String password;
 }

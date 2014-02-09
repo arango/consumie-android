@@ -19,7 +19,17 @@
 
 <resources>
 
-    <style name="Theme.Consumie" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.Consumie" parent="@style/Theme.AppCompat.Light">
+        <item name="android:windowActionBar">false</item>
+
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+
+        <item name="android:windowNoTitle">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsFloating">false</item>
+
+        <item name="android:windowTitleSize">0dp</item>
         <item name="actionBarItemBackground">@drawable/selectable_background_consumie</item>
         <item name="popupMenuStyle">@style/PopupMenu.Consumie</item>
         <item name="dropDownListViewStyle">@style/DropDownListView.Consumie</item>

@@ -8,6 +8,7 @@ import android.net.ConnectivityManager;
 import com.consumie.tracker.models.ConsumptionOptions;
 import com.consumie.tracker.models.Login;
 import com.consumie.tracker.models.LoginSubmission;
+import com.google.gson.Gson;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -26,11 +27,16 @@ public class API {
     private int loading;
     private ProgressDialog progressDialog;
     private Login user;
+    private static Gson gson;
+    private static final String PREF_LOGIN = "login_key";
 
     public API(BaseActivity context) {
         c = context;
         mSharedPreferences = this.c.getSharedPreferences("com.consumie.tracker", Context.MODE_PRIVATE);
         loading = 0;
+        if (gson == null) {
+            gson = new Gson();
+        }
         restAdapter = new RestAdapter.Builder()
                 .setServer(API_URL)
                 .build();
@@ -38,6 +44,18 @@ public class API {
     }
     public void setUser(Login l) {
         this.user = l;
+        mSharedPreferences.edit().putString(PREF_LOGIN, gson.toJson(l)).commit();
+    }
+    public Login getSavedLogin() {
+        String login_data = mSharedPreferences.getString(PREF_LOGIN, null);
+        Login l = null;
+        if (login_data != null) {
+                l = gson.fromJson(login_data, Login.class);
+        }
+        if (l == null)
+            return null;
+        else
+            return l;
     }
     public Login getUser() {
         return this.user;
