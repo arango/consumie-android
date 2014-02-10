@@ -66,9 +66,12 @@ public class ContentFragment extends Fragment {
         sv.setScrollViewListener(new ScrollViewListener() {
             @Override
             public void onScrollChanged(ObservableScrollView scrollView, int x, int y, int oldx, int oldy) {
-                overlay.setAlpha(y / 200f);
-                if (y < 150) {
-                    background.setPadding(0, 50 - (y / 3), 0, 0);
+                Float alpha = y / 200f;
+                int padding = 50 - (y / 3);
+                if (alpha <= .6)
+                    overlay.setAlpha(y / 200f);
+                if (padding <= 50 && padding >= 0) {
+                    background.setPadding(0, padding, 0, 0);
                 }
             }
         });
