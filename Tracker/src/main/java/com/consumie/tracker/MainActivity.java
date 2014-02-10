@@ -72,7 +72,9 @@ public class MainActivity extends BaseActivity {
         mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i2) {
-
+                if (i == 0 && v == 0 && i2 == 0) {
+                    // at beginning - grab new content
+                }
             }
 
             @Override
@@ -83,7 +85,6 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onPageScrollStateChanged(int i) {
-
             }
         });
 

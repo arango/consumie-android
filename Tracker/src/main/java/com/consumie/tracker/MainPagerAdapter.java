@@ -35,7 +35,7 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        ContentFragment frag = new ContentFragment(activity.getItem(position));
+        ContentFragment frag = new ContentFragment(activity.getItem(position), activity);
         return frag;
     }
 

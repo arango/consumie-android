@@ -8,50 +8,104 @@
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:paddingTop="50dp"
         android:id="@+id/background"
-        android:scaleType="centerCrop" />
-
-    <ScrollView
+        android:src="@drawable/sample"
+        android:scaleType="matrix"
+        android:adjustViewBounds="true" />
+    <View
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_marginTop="50dp"
+        android:id="@+id/ovrlay"
+        android:background="@drawable/overlay_screen"
+        android:alpha="0" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:id="@+id/content_title"
+        android:text="February 12th"
+        android:layout_alignParentTop="true"
+        android:shadowColor="@color/dark"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1"
+        android:textSize="24dp"
+        android:textColor="@color/light"
+        android:background="@color/dark"
+        android:gravity="center" />
+    <ImageView
+        android:id="@+id/button_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/btn_menu"/>
+
+
+    <ImageView
+        android:id="@+id/button_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/btn_add"/>
+
+    <com.consumie.tracker.util.ObservableScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="50dp"
+        android:visibility="visible"
         android:id="@+id/scrollView" >
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
+            android:id="@+id/content_holder"
             android:layout_height="fill_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/subtitle"
-                android:textColor="@color/light"
-                android:textSize="18dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:shadowColor="@color/dark"
-                android:shadowDx="1"
-                android:shadowDy="1"
-                android:shadowRadius="0.01"
-                android:visibility="invisible" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/title"
                 android:textColor="@color/light"
-                android:textSize="32dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
+                android:textSize="36dp"
+                android:paddingLeft="45dp"
+                android:paddingRight="45dp"
+                android:shadowColor="@color/dark"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="2"
+                android:text="Title"
+                android:textStyle="bold"
+                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/subtitle"
+                android:textColor="@color/light"
+                android:textSize="20dp"
+                android:paddingLeft="45dp"
+                android:paddingRight="45dp"
                 android:shadowColor="@color/dark"
                 android:shadowDx="1"
                 android:shadowDy="1"
-                android:shadowRadius="0.01"
-                android:textStyle="bold"
-                android:visibility="invisible" />
-
+                android:text="Subtitle"
+                android:shadowRadius="1"
+                 />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:id="@+id/consumption"
+                android:layout_height="wrap_content">
+            </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+    </com.consumie.tracker.util.ObservableScrollView>
 
 </RelativeLayout>
 </FrameLayout>

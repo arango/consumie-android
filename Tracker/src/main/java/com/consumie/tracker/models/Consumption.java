@@ -14,4 +14,5 @@ public class Consumption {
     public Integer commnents;
     public String created;
     public String userimage_path;
+    public Comment[] comment_list;
 }
