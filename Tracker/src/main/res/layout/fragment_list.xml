@@ -4,22 +4,28 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#000000">
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:paddingTop="50dp"
         android:id="@+id/background"
-        android:src="@drawable/sample"
         android:scaleType="matrix"
         android:adjustViewBounds="true" />
     <View
         android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:id="@+id/bottom"
+        android:adjustViewBounds="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/screen"/>
+    <View
+        android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="50dp"
         android:id="@+id/ovrlay"
         android:background="@drawable/overlay_screen"
         android:alpha="0" />
+    <!--
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="50dp"
@@ -54,11 +60,10 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/btn_add"/>
-
+    -->
     <com.consumie.tracker.util.ObservableScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="50dp"
         android:visibility="visible"
         android:id="@+id/scrollView" >
 
@@ -75,12 +80,12 @@
                 android:id="@+id/title"
                 android:textColor="@color/light"
                 android:textSize="36dp"
-                android:paddingLeft="45dp"
-                android:paddingRight="45dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
                 android:shadowColor="@color/dark"
-                android:shadowDx="2"
-                android:shadowDy="2"
-                android:shadowRadius="2"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="2.0"
                 android:text="Title"
                 android:textStyle="bold"
                  />
@@ -90,13 +95,13 @@
                 android:id="@+id/subtitle"
                 android:textColor="@color/light"
                 android:textSize="20dp"
-                android:paddingLeft="45dp"
-                android:paddingRight="45dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
                 android:shadowColor="@color/dark"
-                android:shadowDx="1"
-                android:shadowDy="1"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="2.0"
                 android:text="Subtitle"
-                android:shadowRadius="1"
                  />
             <LinearLayout
                 android:orientation="vertical"

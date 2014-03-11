@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by Arango on 1/2/14.
  */
-public class BaseActivity extends FragmentActivity {
+public class BaseActivity extends ActionBarActivity {
     public static API api = null;
     public static List<Content> contents;
 

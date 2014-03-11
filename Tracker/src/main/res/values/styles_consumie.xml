@@ -19,17 +19,7 @@
 
 <resources>
 
-    <style name="Theme.Consumie" parent="@style/Theme.AppCompat.Light">
-        <item name="android:windowActionBar">false</item>
-
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">fill_parent</item>
-
-        <item name="android:windowNoTitle">false</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowIsFloating">false</item>
-
-        <item name="android:windowTitleSize">0dp</item>
+    <style name="Theme.Consumie" parent="@style/Theme.AppCompat.Light.DarkActionBar">
         <item name="actionBarItemBackground">@drawable/selectable_background_consumie</item>
         <item name="popupMenuStyle">@style/PopupMenu.Consumie</item>
         <item name="dropDownListViewStyle">@style/DropDownListView.Consumie</item>
@@ -42,6 +32,7 @@
 
                 <!-- Light.DarkActionBar specific -->
         <item name="actionBarWidgetTheme">@style/Theme.Consumie.Widget</item>
+        <item name="android:editTextBackground">@drawable/consumie_edit_text_holo_light</item>
 
     </style>
 
@@ -50,6 +41,7 @@
         <item name="backgroundStacked">@drawable/ab_stacked_solid_consumie</item>
         <item name="backgroundSplit">@drawable/ab_bottom_solid_consumie</item>
         <item name="progressBarStyle">@style/ProgressBar.Consumie</item>
+        <item name="displayOptions">showTitle</item>
     </style>
 
     <style name="ActionBar.Transparent.Consumie" parent="@style/Widget.AppCompat.ActionBar">

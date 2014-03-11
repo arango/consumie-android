@@ -6,4 +6,5 @@ package com.consumie.tracker.models;
 public class Comment {
     public String user;
     public String text;
+    public Integer consumptionID;
 }

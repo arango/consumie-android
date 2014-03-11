@@ -6,4 +6,5 @@ package com.consumie.tracker.models;
 public class Results {
     public Login Login;
     public ContentList ContentList;
+    public Comment Comment;
 }

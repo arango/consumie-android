@@ -2,8 +2,8 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:paddingLeft="45dp"
-    android:paddingRight="45dp"
+    android:paddingLeft="25dp"
+    android:paddingRight="25dp"
     android:layout_height="wrap_content">
         <View
             android:layout_marginTop="8dp"
@@ -61,13 +61,19 @@
             android:orientation="vertical"
             android:layout_height="wrap_content"></LinearLayout>
 
-        <EditText
+        <com.consumie.tracker.util.CommentEditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText"
+            android:singleLine="false"
+            android:scrollHorizontally="false"
+            android:scrollbars="vertical"
+            android:id="@+id/add_comment"
             android:textColor="@color/light"
+            android:textSize="16dp"
+            android:imeOptions="actionDone"
+            android:inputType="textMultiLine"
             android:textColorHint="@color/light"
-            android:hint="add comment" />
+            android:hint="Add comment..." />
 
 
 </LinearLayout>

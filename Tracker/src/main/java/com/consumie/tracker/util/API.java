@@ -1,10 +1,13 @@
 package com.consumie.tracker.util;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 
+import com.consumie.tracker.R;
+import com.consumie.tracker.models.AddCommentOptions;
 import com.consumie.tracker.models.ConsumptionOptions;
 import com.consumie.tracker.models.Login;
 import com.consumie.tracker.models.LoginSubmission;
@@ -13,6 +16,8 @@ import com.google.gson.Gson;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import de.keyboardsurfer.android.widget.crouton.Crouton;
+import de.keyboardsurfer.android.widget.crouton.Style;
 import retrofit.RestAdapter;
 
 /**
@@ -83,11 +88,24 @@ public class API {
             }
         }
     }
+    public void showCrouton(int msg) {
+        String txt = this.c.getResources().getString(msg);
+        Crouton.makeText((Activity)this.c, txt, Style.ALERT).show();
+    }
+
     public void Consumption(ConsumptionOptions options, APICallback cb) {
         cb.showOverlay = false;
         if (isNetworkConnected()) {
             options.userKey = this.user.userkey;
             api.consumption(options, cb);
+        } else {
+            cb.failure(null);
+        }
+    }
+    public void AddComment(AddCommentOptions options, APICallback cb) {
+        if (isNetworkConnected()) {
+            options.userKey = this.user.userkey;
+            api.add_comment(options, cb);
         } else {
             cb.failure(null);
         }

@@ -17,27 +17,26 @@ import retrofit.client.Response;
  * Created by Arango on 1/2/14.
  */
 public class APICallback implements Callback<Results> {
-    private BaseActivity context;
+    private API api;
     public Boolean showOverlay = true;
-    public APICallback(BaseActivity context){
-        this.context = context;
+    public APICallback(API api){
+        this.api = api;
     }
 
     @Override
     public void success(Results results, Response response) {
         Log.d("READY", "Success");
         if (showOverlay)
-            context.api.hideProgress();
+            this.api.hideProgress();
     }
     @Override
     public void failure(RetrofitError retrofitError) {
         if (showOverlay)
-            context.api.hideProgress();
+            this.api.hideProgress();
         if (retrofitError == null) {
-            String no_connection = this.context.getResources().getString(R.string.connectivity_error);
-            Crouton.makeText(this.context, no_connection, Style.ALERT).show();
+            this.api.showCrouton(R.string.connectivity_error);
         } else {
-            Crouton.makeText(this.context, this.context.getResources().getString(R.string.server_error), Style.ALERT).show();
+            this.api.showCrouton(R.string.server_error);
         }
     }
 

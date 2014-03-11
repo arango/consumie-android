@@ -17,8 +17,10 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.Display;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,7 +96,7 @@ public class MainActivity extends BaseActivity {
         if (gettingContent)
             return;
         gettingContent = true;
-        api.Consumption(opts, new APICallback(this) {
+        api.Consumption(opts, new APICallback(api) {
             @Override
             public void success(Results results, Response response) {
                 super.success(results, response);
@@ -119,6 +121,35 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId())
+        {
+            case R.id.action_add:
+                break;
+            case R.id.action_log_out:
+                break;
+            case R.id.action_filter:
+                break;
 
+        }
+        return true;
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (mPager.getCurrentItem() > 0) {
+                mPager.setCurrentItem(0);
+                return true;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }

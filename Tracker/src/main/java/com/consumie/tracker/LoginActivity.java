@@ -168,7 +168,7 @@ public class LoginActivity extends BaseActivity {
             // perform the user login attempt.
             mLoginStatusMessageView.setText(R.string.login_progress_signing_in);
             showProgress(true);
-            APICallback cb = new APICallback(this) {
+            APICallback cb = new APICallback(api) {
                 @Override
                 public void success(Results results, retrofit.client.Response response) {
                     super.success(results, response);
